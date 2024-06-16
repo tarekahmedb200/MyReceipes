@@ -18,7 +18,12 @@ class CategoryReceipeListViewModel : ObservableObject {
     private var categoryReceipeListFetcher : CategoryReceipeListFetcher
     var receipes : [Receipe] = []
     private var category:String
-    private var errorMessage:String?
+    @Published var showAlert = false
+    @Published var errorMessage: String? {
+        didSet {
+            showAlert = errorMessage != nil
+        }
+    }
     @Published var searchText : String = "" {
         didSet {
             if !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {

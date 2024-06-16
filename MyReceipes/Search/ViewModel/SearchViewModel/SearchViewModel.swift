@@ -15,7 +15,12 @@ protocol SearchedReceipesFetcher {
 class SearchViewModel : ObservableObject {
     
     @Published var receipes = [Receipe]()
-    @Published var errorMessage : String?
+    @Published var showAlert = false
+    @Published var errorMessage: String? {
+        didSet {
+            showAlert = errorMessage != nil
+        }
+    }
    
     private var searchedReceipesFetcher : SearchedReceipesFetcher
     private var name : String

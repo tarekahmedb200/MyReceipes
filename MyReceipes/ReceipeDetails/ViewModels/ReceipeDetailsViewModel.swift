@@ -25,7 +25,12 @@ class ReceipeDetailsViewModel : ObservableObject {
     @Published var receipe: Receipe?
     @Published var receipeImage: UIImage?
     @Published var objectReceipe: Receipe
-    @Published var errorMessage: String?
+    @Published var showAlert = false
+    @Published var errorMessage: String? {
+        didSet {
+            showAlert = errorMessage != nil
+        }
+    }
     @Published var isAddedToFavourite: Bool = false
     
     private var receipeDetailsFetcher: ReceipeDetailsFetcher

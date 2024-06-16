@@ -12,7 +12,10 @@ struct CategoryReceipeListView: View {
     
     var body: some View {
         ReceipesListView(receipes: $viewModel.filteredReceipes)
-            .searchable(text: $viewModel.searchText , prompt: "Search..")
+            .searchable(text: $viewModel.searchText , prompt: "Search Receipes..")
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(title: Text("Alert"), message: Text(viewModel.errorMessage ?? "Default message"), dismissButton: .default(Text("OK")))
+            }
             .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: {
                 Task {

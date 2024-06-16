@@ -18,6 +18,9 @@ struct SearchView: View {
                     await viewModel.fetchSearchedReceipes()
                 }
             }
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(title: Text("Alert"), message: Text(viewModel.errorMessage ?? "Default message"), dismissButton: .default(Text("OK")))
+            }
     }
 }
 

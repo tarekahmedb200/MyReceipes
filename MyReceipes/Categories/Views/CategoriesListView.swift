@@ -11,39 +11,42 @@ struct CategoriesListView: View {
     @StateObject var viewModel : CategoriesViewModel
     
     var columns: [GridItem] =
-    Array(repeating: GridItem(.flexible(minimum: 100, maximum: 200)), count: 2)
+    Array(repeating: GridItem(.flexible()), count: 2)
     
     var body: some View {
         
         NavigationView {
             
             ZStack {
-                ScrollView {
-                    LazyVGrid(columns: columns,alignment: .center) {
-                        Section(header:
-                                    HStack {
-                            Text("Categories").font(.title)
-                                .padding()
-                            
-                            Spacer()
-                        }
+                
+                if viewModel.isSearching {
+                    SearchView(viewModel: SearchViewModel(name: viewModel.searchText, searchedReceipesFetcher: SearchService(requestManager: APIManager())))
+                } else {
+                    
+                    ScrollView {
+                        LazyVGrid(columns: columns,alignment: .center) {
+                            Section(header:
+                                        HStack {
+                                Text("Categories").font(.title)
+                                    .padding()
                                 
-                        ) {
-                            ForEach(viewModel.categories) { category in
-                                NavigationLink {
-                                    CategoryReceipeListView(viewModel: CategoryReceipeListViewModel(category: category.name, categoryReceipeListFetcher: CategoryReceipeListService(requestManager: APIManager())))
-                                } label: {
-                                    CategoryItemView(category: category)
-                                        .padding()
+                                Spacer()
+                            }
+                                    
+                            ) {
+                                ForEach(viewModel.categories) { category in
+                                    NavigationLink {
+                                        CategoryReceipeListView(viewModel: CategoryReceipeListViewModel(category: category.name, categoryReceipeListFetcher: CategoryReceipeListService(requestManager: APIManager())))
+                                    } label: {
+                                        CategoryItemView(category: category)
+                                            .padding()
+                                    }
                                 }
                             }
                         }
                     }
                 }
                 
-                if viewModel.isSearching {
-                    SearchView(viewModel: SearchViewModel(name: viewModel.searchText, searchedReceipesFetcher: SearchService(requestManager: APIManager())))
-                }
                 
             }
             .searchable(text: $viewModel.searchText ,placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Receipes..")

@@ -18,7 +18,13 @@ class FavouriteViewModel : ObservableObject {
     @Published var filteredReceipes : [Receipe] = []
     private var favouritesStore : FavouritesStore
     var receipes : [Receipe] = []
-    private var errorMessage:String?
+    @Published var showAlert = false
+    @Published var errorMessage: String? {
+        didSet {
+            showAlert = errorMessage != nil
+        }
+    }
+    
     @Published var searchText : String = "" {
         didSet {
             if !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {

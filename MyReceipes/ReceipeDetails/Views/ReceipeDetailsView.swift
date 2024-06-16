@@ -58,6 +58,9 @@ struct ReceipeDetailsView: View {
             .padding()
             .frame(width: UIScreen.main.bounds.width)
         }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("Alert"), message: Text(viewModel.errorMessage ?? "Default message"), dismissButton: .default(Text("OK")))
+        }
         .task {
             await viewModel.fetchReceipeDetails()
         }

@@ -22,12 +22,12 @@ struct CategoryItemView: View {
                 }
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 200, height: 150)
+                .frame(width: 150, height: 150)
                 .overlay {
                     Text(category.name)
                         .font(.system(size: 30,weight: .bold))
                         .foregroundStyle(.white)
-                        .frame(width: 200, height: 150)
+                        .frame(width: 150, height: 150)
                         .background(LinearGradient(colors: [.black.opacity(0.6),.white.opacity(0.1)], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
                 }
