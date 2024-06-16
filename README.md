@@ -2,6 +2,14 @@
 
 ## an app that shows the latest receipe from https://www.themealdb.com Api and shows your favourite Receipe even if offline. 
 
+
+## Key Features : 
+
+- Shows Categories 
+- Search For Specific Receipe by Name
+- Shows Receipe List
+- Shows Favourites Receipes Offline 
+
 ## Built With Tools : 
 
 - Swift 
