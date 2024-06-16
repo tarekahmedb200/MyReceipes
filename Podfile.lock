@@ -1,0 +1,20 @@
+PODS:
+  - Kingfisher (7.10.2)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - Kingfisher (~> 7.0)
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Kingfisher: 99edc495d3b7607e6425f0d6f6847b2abd6d716d
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 66ef40bea6d5287ef560d16cebaa05139b081bec
+
+COCOAPODS: 1.14.3
